@@ -1,0 +1,23 @@
+package Project_SE115;
+
+import java.util.Scanner;
+
+public class Meat {
+    public static int calculatePrice(int number) {
+        Scanner input = new Scanner(System.in);
+        int meatPrice = 0;
+        System.out.println("Price is $75 per person for Meat Menu, do you confirm?\nPlease enter 1 for 'YES' or 2 for'NO' ");
+        int confirmation = input.nextInt();
+        if (confirmation == 1) {
+            meatPrice = 75 * number;
+            System.out.println("Price for meat menu $" + meatPrice);
+
+        } else if (confirmation == 2) {
+            System.out.println("Thank you for choosing us!\n Program quits...");
+            System.exit(0);
+        }
+
+
+        return meatPrice;
+    }
+}
