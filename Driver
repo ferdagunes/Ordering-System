@@ -1,0 +1,64 @@
+package Project_SE115;
+
+import java.util.Scanner;
+
+public class Driver {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter your name!");
+        String userName = input.next();
+        System.out.println("Welcome " + userName + "! How many people will attend the organization!");
+        int numberOfPeople = input.nextInt();
+        int mNumber = 0, vNumber = 0, otherNumber = 0;
+        if (numberOfPeople >= 200) {
+            System.out.println(
+                    "Due to the COVID-19 situations, we recommend that you do not organize with 200 or more people!");
+            System.exit(0);
+        }
+
+        System.out.println("     MENU     \nHors D'Oeuvre \nMain Course(Meat/Vegetarian)\nDessert");
+
+        System.out.println("Please choose 1 if you want to choose main course as meat menu! \nPlease choose 2 if you want to choose main course as vegetarian menu! \nPlease choose 0 to quit!");
+        int choice = input.nextInt();
+        int totalPrice = 0;
+        switch (choice) {
+            case 0:
+                System.out.println("Program quits...");
+                System.exit(0);
+                break;
+            case 1:
+                System.out.println("Please enter the number of people who eats meat menu!");
+                mNumber = input.nextInt();
+                vNumber = numberOfPeople - mNumber;
+                if (mNumber != numberOfPeople) {
+                    System.out.println("You have " + vNumber + " guest more! So you are choosing Vegetarian menu for " + vNumber + " people.");
+                    totalPrice = Meat.calculatePrice(mNumber) + Vegetarian.calculatePrice(vNumber);
+                } else if (mNumber == numberOfPeople) {
+                    totalPrice = Meat.calculatePrice(mNumber);
+                }
+                break;
+            case 2:
+                System.out.println("Please enter the number of people who eats vegetarian menu!");
+                vNumber = input.nextInt();
+                mNumber = numberOfPeople - vNumber;
+                if (vNumber != numberOfPeople) {
+                    System.out.println("You have " + mNumber + " guest more! So you are choosing Meat menu for " + mNumber + " people.");
+                    totalPrice = Vegetarian.calculatePrice(vNumber) + Meat.calculatePrice(mNumber);
+                } else if (vNumber == numberOfPeople) {
+                    totalPrice = Vegetarian.calculatePrice(vNumber);
+                }
+
+                break;
+
+        }
+        if (numberOfPeople > 100) {
+            System.out.println("Surprise! You get %20 discount!");
+            totalPrice = totalPrice * 80 / 100;
+        }
+
+        System.out.println("Your total cost is: $" + totalPrice);
+
+
+    }
+}
+
