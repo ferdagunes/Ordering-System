@@ -1,0 +1,22 @@
+package Project_SE115;
+
+import java.util.Scanner;
+
+public class Vegetarian {
+    public static int calculatePrice(int number) {
+        Scanner input = new Scanner(System.in);
+        int vegiePrice = 0;
+        System.out.println("Price is $60 per person for Vegetarian Menu, do you confirm?\nPlease enter 1 for 'YES' or 2 for'NO' ");
+        int confirmation = input.nextInt();
+        if (confirmation == 1) {
+            vegiePrice = 60 * number;
+            System.out.println("Price for vegetarian menu $" + vegiePrice);
+        } else if (confirmation == 2) {
+            System.out.println("Thank you for choosing us!\n Program quits...");
+            System.exit(0);
+        }
+
+        return vegiePrice;
+    }
+}
+
